@@ -6,6 +6,7 @@
   <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.0/aframe/build/aframe-ar.js"></script>
   <script src="js/aframe-extras.js"></script>
   <script src="js/aframe-text-geometry-component.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
 <!-- <script>
     
@@ -65,7 +66,7 @@ this.el.addEventListener('click', () => {
             <a-asset-item id="dora" src="/Figures/Doraemon/model_Doraemon_20171129_203444512.gltf"></a-asset-item>
             <!-- <a-asset-item id='bot' src="Figures/bot/bot4.json"></a-asset-item> -->
         </a-assets>
-        <a-entity position="0 0 -100" scale="0.1 0.1 0.1" gltf-model="#dora" modify-materials></a-entity>
+        <a-entity id="dora_entity" position="0 0 -100" scale="0.1 0.1 0.1" gltf-model="#dora" modify-materials></a-entity>
         <!-- <a-entity position="0 0 -100" scale="1 1 1" json-model="url(/Figures/bot/bot4.json);" modify-materials></a-entity> -->
 
       </a-scene>
@@ -81,6 +82,10 @@ this.el.addEventListener('click', () => {
     </a-assets>
     <a-entity position="0 0 -100" scale="0.1 0.1 0.1" gltf-model="#dora" modify-materials></a-entity>
     <a-entity position="0 0 -10" scale="1 1 1" json-model="#bot" modify-materials></a-entity>
-	</a-scene> -->
+  </a-scene> -->
+  
+  <!-- <script src="/js/try_aframe.js"></script> -->
+  <script src="/js/map_routing_api/api_key.js"></script>
+  <script src="/js/map_routing_api/requests.js"></script>
 </body>
 </html>
