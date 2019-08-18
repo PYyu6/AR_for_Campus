@@ -7,6 +7,7 @@
   <script src="js/aframe-extras.js"></script>
   <script src="js/aframe-text-geometry-component.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/mathjs/dist/math.min.js"></script>
   </head>
 <!-- <script>
     
@@ -84,7 +85,9 @@ this.el.addEventListener('click', () => {
     <a-entity position="0 0 -10" scale="1 1 1" json-model="#bot" modify-materials></a-entity>
   </a-scene> -->
   
-  <script src="/js/try_aframe.js"></script>
+  <!-- <script src="/js/try_aframe.js"></script> -->
+  <script src='/js/utils/orientation_math.js'></script>
+  <script src='/js/sensors/orientation_sensor.js'></script>
   <script src="/js/map_routing_api/api_key.js"></script>
   <script src="/js/map_routing_api/requests.js"></script>
 </body>
