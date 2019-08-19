@@ -55,22 +55,29 @@ this.el.addEventListener('click', () => {
 </script> -->
 
 <body style='margin : 0px; overflow: hidden;'>
-    <a-scene embedded arjs='sourceType: webcam;'>
+    <div align="center" style="z-index: 2">
+      <input id='loc_input' height="20%"/>
+      <button id='submit_loc'>navigate</button>
+    </div>
+    
+    <div style="z-index: 1" >
+      <a-scene embedded arjs='sourceType: webcam;'>
 
-        <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-        <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-        <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-        <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-        <a-sky color="#ECECEC"></a-sky> -->
-        <a-assets>
-            <a-asset-item id="cityModel" src="https://cdn.aframe.io/test-models/models/glTF-2.0/virtualcity/VC.gltf"></a-asset-item>
-            <a-asset-item id="dora" src="/Figures/Doraemon/model_Doraemon_20171129_203444512.gltf"></a-asset-item>
-            <!-- <a-asset-item id='bot' src="Figures/bot/bot4.json"></a-asset-item> -->
-        </a-assets>
-        <a-entity id="dora_entity" position="0 0 -100" scale="0.1 0.1 0.1" gltf-model="#dora" modify-materials></a-entity>
-        <!-- <a-entity position="0 0 -100" scale="1 1 1" json-model="url(/Figures/bot/bot4.json);" modify-materials></a-entity> -->
+          <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+          <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+          <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+          <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+          <a-sky color="#ECECEC"></a-sky> -->
+          <a-assets>
+              <a-asset-item id="cityModel" src="https://cdn.aframe.io/test-models/models/glTF-2.0/virtualcity/VC.gltf"></a-asset-item>
+              <a-asset-item id="dora" src="/Figures/Doraemon/model_Doraemon_20171129_203444512.gltf"></a-asset-item>
+              <!-- <a-asset-item id='bot' src="Figures/bot/bot4.json"></a-asset-item> -->
+          </a-assets>
+          <a-entity id="dora_entity" position="0 0 -100" scale="0.1 0.1 0.1" gltf-model="#dora" modify-materials></a-entity>
+          <!-- <a-entity position="0 0 -100" scale="1 1 1" json-model="url(/Figures/bot/bot4.json);" modify-materials></a-entity> -->
 
-      </a-scene>
+        </a-scene>
+      </div>
 	<!-- <a-scene embedded arjs='sourceType: webcam;'>
     <a-camera/>
     <a-box width="0.25" height="0.25" depth="0.25" position="-0.25 0.125 -0.75" rotation="0 45 0" color="#4CC3D9"></a-box>
@@ -85,10 +92,12 @@ this.el.addEventListener('click', () => {
     <a-entity position="0 0 -10" scale="1 1 1" json-model="#bot" modify-materials></a-entity>
   </a-scene> -->
   
-  <!-- <script src="/js/try_aframe.js"></script> -->
   <script src='/js/utils/orientation_math.js'></script>
   <script src='/js/sensors/orientation_sensor.js'></script>
   <script src="/js/map_routing_api/api_key.js"></script>
   <script src="/js/map_routing_api/requests.js"></script>
+  <script src="/js/sensors/geo_location_sensor.js"></script>
+
+  <script src="/js/try_aframe.js"></script>
 </body>
 </html>
