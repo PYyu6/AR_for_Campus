@@ -11,6 +11,7 @@ const state = {
 };
 
 const way_point_proximity_coefficient = 0.1;
+const ar_entity_distance = 100;
 
 nav_button.addEventListener("click", (e) => {
     const target_address = loc_input.value;
@@ -32,6 +33,7 @@ nav_button.addEventListener("click", (e) => {
             state.next_loc = wy_pts[0];
             state.way_points = wy_pts.slice(1);
             state.distance = math.norm(lat_lon_to_world(state.cur_loc, state.next_loc));
+            // alert(JSON.stringify(state));
         })
         .catch(alert);
 });
@@ -48,13 +50,41 @@ const is_at_way_point = () => {
 } 
 
 const update_ar_display = () => {
-    if(!!state.orientation_matrix && state.is_navigating){
-        const display_position = world_to_mobile(state.orientation_matrix, [...lat_lon_to_world(state.cur_loc, state.next_loc), 0]);
-        ar_entity.setAttribute('position', `${display_position[0][0]} ${display_position[1][0]} ${display_position[2][0]}`);
+    // alert('updating')
+    // if(!!state.orientation_matrix && state.is_navigating){
+    //     const display_position = world_to_mobile(state.orientation_matrix, [...lat_lon_to_world(state.cur_loc, state.next_loc), 0]);
+    //     alert(JSON.stringify(
+    //         {
+    //             walking_direction: display_position,
+    //             next_loc: state.next_loc,
+    //             cur_loc: state.cur_loc
+    //         }
+    //     ));
+    //     ar_entity.setAttribute('position', `${display_position[0][0]} ${display_position[1][0]} ${display_position[2][0]}`);
+    // }
+    if(state.is_navigating){
+        const display_position = lat_lng_to_screen(state.cur_loc, state.next_loc);
+        // alert(JSON.stringify(
+        //     {
+        //         walking_direction: display_position,
+        //         next_loc: state.next_loc,
+        //         cur_loc: state.cur_loc
+        //     }
+        // ));
+        let p = [display_position[0], 0, display_position[2]];
+        let p_norm = math.norm(p);
+        let coefficient = ar_entity_distance / p_norm;
+        // if(coefficient > 1){
+        //     coefficient = 1;
+        // }
+        p = p.map((pi) => {return pi * coefficient});
+
+        ar_entity.setAttribute('position', `${p[0]} ${p[1]} ${p[2]}`);
     }
 }
 
 start_watching_geolocation((loc) => {
+    // alert(JSON.stringify(state))
     state.cur_loc = loc;
     // alert('lol');
     if(is_at_way_point()){
@@ -70,10 +100,10 @@ start_watching_geolocation((loc) => {
     update_ar_display();
 });
 
-start_orientation_sensor((matrix) => {
-    // alert('!');
-    state.orientation_matrix = matrix;
-})
+// start_orientation_sensor((matrix) => {
+    
+//     state.orientation_matrix = matrix;
+// })
 
 // const times = {time: 1}
 // setInterval(() => {

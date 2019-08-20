@@ -15,7 +15,7 @@ const options = {
 
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // app.use (function (req, res, next) {
 //   if (req.secure) {
@@ -31,31 +31,21 @@ app.use(bodyParser.json());
 app.use('/', express.static(path.join(__dirname, 'static_files')));
 
 app.get('/cors_bypass', (req, res) => {
-  // console.log(JSON.stringify(req.body));
-  // console.log(req.content);
-  // Object.keys(req).forEach((k) => {
-  //   try{
-  //     console.log(k + ',' + JSON.stringify(req[k]) + '\n');
-  //   }catch(error){
-  //     console.log(k);
-  //   }
-    
-  // });
   console.log(JSON.stringify(req.query));
   superagent.get(req.query.url)
             .then((cors_res) => {
               res.send(cors_res.body);
-              res.end()     
+              res.end();     
             })
             .catch(err => {
               res.sendStatus(500);
               res.end();
-            })
-})
+            });
+});
 
 // app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 // https.createServer(options, app).listen(port);
 const server = https.createServer(options, app);
 server.listen(port, () => {
-  console.log("server starting on port : " + port)
+  console.log("server starting on port : " + port);
 });
