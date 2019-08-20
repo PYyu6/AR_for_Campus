@@ -6,12 +6,12 @@ const httpsRedirect = require('express-https-redirect');
 const superagent = require('superagent');
 const bodyParser = require('body-parser');
 
-const key = fs.readFileSync(path.join(__dirname, 'selfsigned.key'));
-const cert = fs.readFileSync(path.join(__dirname, 'selfsigned.crt'));
-const options = {
-  key: key,
-  cert: cert
-};
+// const key = fs.readFileSync(path.join(__dirname, 'selfsigned.key'));
+// const cert = fs.readFileSync(path.join(__dirname, 'selfsigned.crt'));
+// const options = {
+//   key: key,
+//   cert: cert
+// };
 
 
 const app = express();
@@ -43,9 +43,9 @@ app.get('/cors_bypass', (req, res) => {
             });
 });
 
-// app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 // https.createServer(options, app).listen(port);
-const server = https.createServer(options, app);
-server.listen(port, () => {
-  console.log("server starting on port : " + port);
-});
+// const server = https.createServer(options, app);
+// server.listen(port, () => {
+//   console.log("server starting on port : " + port);
+// });
