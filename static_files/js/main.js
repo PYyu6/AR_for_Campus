@@ -1,4 +1,4 @@
-alert('');
+console.log('at least i logged');
 // const ar_entity = document.querySelector('#dora_entity');
 
 // setTimeout(() => {
