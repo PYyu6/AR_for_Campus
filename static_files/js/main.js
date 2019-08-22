@@ -1,5 +1,5 @@
 alert('');
-const ar_entity = document.querySelector('#dora_entity');
+// const ar_entity = document.querySelector('#dora_entity');
 
 // setTimeout(() => {
 //     alert(Object.keys(ar_entity).map((k) => {
