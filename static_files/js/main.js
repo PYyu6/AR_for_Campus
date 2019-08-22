@@ -1,4 +1,14 @@
-// const ar_entity = document.querySelector('#dora_entity');
+const ar_entity = document.querySelector('#dora_entity');
+
+setTimeout(() => {
+    alert(Object.keys(ar_entity).map((k) => {
+        try{
+            return JSON.stringify({key: k, value: ar_entity[k]})
+        }catch(error){
+            return k
+        }
+    }).join('\n'));
+}, 5000);
 // const loc_input = document.querySelector('#loc_input');
 // const nav_button = document.querySelector('#submit_loc');
 // const camera = document.querySelector('#camera');
