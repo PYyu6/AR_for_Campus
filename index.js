@@ -43,7 +43,7 @@ app.get('/cors_bypass', (req, res) => {
             });
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 // https.createServer(options, app).listen(port);
 // const server = https.createServer(options, app);
 // server.listen(port, () => {

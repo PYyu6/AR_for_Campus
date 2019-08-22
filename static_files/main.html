@@ -8,6 +8,9 @@
   <script src="js/aframe-text-geometry-component.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://unpkg.com/mathjs/dist/math.min.js"></script>
+  <script src="https://rawgit.com/argonjs/argon/develop/dist/argon.js"></script>
+  <script src="https://rawgit.com/argonjs/argon-aframe/master/dist/argon-aframe.js"></script>
+
   </head>
 <!-- <script>
     
@@ -55,13 +58,13 @@ this.el.addEventListener('click', () => {
 </script> -->
 
 <body style='margin : 0px; overflow: hidden;'>
-    <div align="center" style="z-index: 2">
+    <div align="center" hidden id="location_input_div">
       <input id='loc_input' height="20%"/>
       <button id='submit_loc'>navigate</button>
     </div>
     
-    <div style="z-index: 1" >
-      <a-scene embedded arjs='sourceType: webcam;'>
+   
+      <ar-scene embedded arjs='sourceType: webcam;'>
 
           <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
           <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
@@ -73,11 +76,14 @@ this.el.addEventListener('click', () => {
               <a-asset-item id="dora" src="/Figures/Doraemon/model_Doraemon_20171129_203444512.gltf"></a-asset-item>
               <!-- <a-asset-item id='bot' src="Figures/bot/bot4.json"></a-asset-item> -->
           </a-assets>
-          <a-entity id="dora_entity" position="0 0 -100" scale="0.1 0.1 0.1" gltf-model="#dora" modify-materials></a-entity>
+          <a-entity css-object="div:#location_input_div" scale="0.01 0.01 0.01" rotation="0 0 0" position="0 0 0.5"></a-entity>
+          <ar-geopose id="dora_entity" lla="-79.397778 43.659167" userrotation="false">
+              <a-entity position="0 0 0" scale="0.1 0.1 0.1" gltf-model="#dora" modify-materials></a-entity>
+          </ar-geopose>
           <!-- <a-entity position="0 0 -100" scale="1 1 1" json-model="url(/Figures/bot/bot4.json);" modify-materials></a-entity> -->
-
-        </a-scene>
-      </div>
+          <a-camera id="camera" user-height="1.6"></a-camera>
+        </ar-scene>
+      
 	<!-- <a-scene embedded arjs='sourceType: webcam;'>
     <a-camera/>
     <a-box width="0.25" height="0.25" depth="0.25" position="-0.25 0.125 -0.75" rotation="0 45 0" color="#4CC3D9"></a-box>

@@ -1,6 +1,26 @@
 const ar_entity = document.querySelector('#dora_entity');
 const loc_input = document.querySelector('#loc_input');
 const nav_button = document.querySelector('#submit_loc');
+const camera = document.querySelector('#camera');
+
+loc_input.addEventListener("input", () => {
+    // console.log(Object.keys(camera).map(k => {
+    //     try{
+    //         return JSON.stringify({key: k, value: camera[k]});
+    //     }catch(error){
+    //         return k.toString();
+    //     }
+        
+    // }).join('\n'));
+    // alert(JSON.stringify(camera.object3D.getWorldDirection()));
+    alert([
+        JSON.stringify(ar_entity.object3D.getWorldPosition()),
+        JSON.stringify(ar_entity.object3D.position)   
+    ].join('\n'));
+
+});
+
+
 const state = {
     cur_loc: undefined,
     next_loc: undefined,
@@ -62,25 +82,34 @@ const update_ar_display = () => {
     //     ));
     //     ar_entity.setAttribute('position', `${display_position[0][0]} ${display_position[1][0]} ${display_position[2][0]}`);
     // }
-    if(state.is_navigating){
-        const display_position = lat_lng_to_screen(state.cur_loc, state.next_loc);
-        // alert(JSON.stringify(
-        //     {
-        //         walking_direction: display_position,
-        //         next_loc: state.next_loc,
-        //         cur_loc: state.cur_loc
-        //     }
-        // ));
-        let p = [display_position[0], 0, display_position[2]];
-        let p_norm = math.norm(p);
-        let coefficient = ar_entity_distance / p_norm;
-        // if(coefficient > 1){
-        //     coefficient = 1;
-        // }
-        p = p.map((pi) => {return pi * coefficient});
+    // if(state.is_navigating){
+    //     // let next_lat =  state.next_loc.lat;
+    //     // let next_lon = state.next_loc.lon;
+    //     let next_lat = 43.659167499999995;
+    //     let next_lon = -79.39752949999999;
+    //     ar_entity.setAttribute('gps-entity-place', {
+    //         latitude: next_lat,
+    //         longitude: next_lon
+    //     });
+        // alert(JSON.stringify(ar_entity.getAttribute('gps-entity-place')));
+        // const display_position = lat_lng_to_screen(state.cur_loc, state.next_loc);
+        // // alert(JSON.stringify(
+        // //     {
+        // //         walking_direction: display_position,
+        // //         next_loc: state.next_loc,
+        // //         cur_loc: state.cur_loc
+        // //     }
+        // // ));
+        // let p = [display_position[0], 0, display_position[2]];
+        // let p_norm = math.norm(p);
+        // let coefficient = ar_entity_distance / p_norm;
+        // // if(coefficient > 1){
+        // //     coefficient = 1;
+        // // }
+        // p = p.map((pi) => {return pi * coefficient});
 
-        ar_entity.setAttribute('position', `${p[0]} ${p[1]} ${p[2]}`);
-    }
+        // ar_entity.setAttribute('position', `${p[0]} ${p[1]} ${p[2]}`);
+        // }
 }
 
 start_watching_geolocation((loc) => {
@@ -100,10 +129,10 @@ start_watching_geolocation((loc) => {
     update_ar_display();
 });
 
-// start_orientation_sensor((matrix) => {
+start_orientation_sensor((matrix) => {
     
-//     state.orientation_matrix = matrix;
-// })
+    state.orientation_matrix = matrix;
+})
 
 // const times = {time: 1}
 // setInterval(() => {
