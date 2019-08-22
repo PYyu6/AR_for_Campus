@@ -58,7 +58,7 @@ this.el.addEventListener('click', () => {
 </script> -->
 
 <body style='margin : 0px; overflow: hidden;'>
-    <div align="center" hidden id="location_input_div">
+    <div hidden id="location_input_div">
       <input id='loc_input' height="20%"/>
       <button id='submit_loc'>navigate</button>
     </div>
@@ -76,8 +76,8 @@ this.el.addEventListener('click', () => {
               <a-asset-item id="dora" src="/Figures/Doraemon/model_Doraemon_20171129_203444512.gltf"></a-asset-item>
               <!-- <a-asset-item id='bot' src="Figures/bot/bot4.json"></a-asset-item> -->
           </a-assets>
-          <a-entity css-object="div:#location_input_div" scale="0.01 0.01 0.01" rotation="0 0 0" position="0 0 0.5"></a-entity>
-          <ar-geopose id="dora_entity" lla="-79.397778 43.659167" userrotation="false">
+          <a-entity css-object="div: #location_input_div" scale="0.1 0.1 0.1" rotation="0 0 0" position="0 0 0.5"></a-entity>
+          <ar-geopose id="dora_entity" lla="-79.397779 43.659167" userrotation="false">
               <a-entity position="0 0 0" scale="0.1 0.1 0.1" gltf-model="#dora" modify-materials></a-entity>
           </ar-geopose>
           <!-- <a-entity position="0 0 -100" scale="1 1 1" json-model="url(/Figures/bot/bot4.json);" modify-materials></a-entity> -->
