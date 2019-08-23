@@ -116,7 +116,7 @@ const update_ar_display = () => {
         try{
             const lat = state.next_loc.lat;
             const lon = state.next_loc.lon;
-            console.log(`SET BEACON`);
+            console.log(`${lat} ${lon}`);
             ar_entity.setAttribute('lla', `${lat} ${lon} 100`);
         }catch(error){
             // console.log('IMPOSSIBLEEEEEEEEEEEEEEEE!');
