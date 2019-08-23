@@ -11,7 +11,7 @@ const find_coordinate_by_address = (address_str) => {
     //   }
     // })
     $.get('/cors_bypass?' + $.param({url: req_str}), (data, status) => {
-      console.log(JSON.stringify(data));
+      // console.log(JSON.stringify(data));
       resolve(data);
     });
 
@@ -42,7 +42,7 @@ const find_direction = (from_coord, to_coord) => {
       // alert(JSON.stringify(to_coord));
       // alert(JSON.stringify(data));
       // resolve(data, from_coord, to_coord);
-      console.log(JSON.stringify(data));
+      // console.log(JSON.stringify(data));
       resolve({
         dt: data,
         from_coord: from_coord,

@@ -16,7 +16,7 @@ const start_watching_geolocation = (on_update) => {
       })
     }, 100);
   }else{
-    alert('geolocation not available');
+    // alert('geolocation not available');
   }
 }
 

@@ -53,7 +53,7 @@ setTimeout(() => {
         .then(parse_coord_search_result)
         .then((to_coord) => {
             if(!!state.cur_loc){
-                console.log('ADDRESS FOUND ' + JSON.stringify(to_coord));
+                console.log('ADDRESS FOUND');
                 return find_direction(state.cur_loc, to_coord);
             }else{
                 throw "no current location";
@@ -68,7 +68,7 @@ setTimeout(() => {
             state.distance = math.norm(lat_lon_to_world(state.cur_loc, state.next_loc));
             // alert(JSON.stringify(state));
         })
-        .catch(() => {});
+        .catch(console.log);
 }, 1000);
 
 // nav_button.addEventListener("click", (e) => {
@@ -112,7 +112,7 @@ const update_ar_display = () => {
         try{
             const lat = this.next_loc.lat;
             const lon = this.next_loc.lon;
-            console.log(`SET BEACON AT ${JSON.stringify(this.next_loc)}`);
+            console.log(`SET BEACON`);
             ar_entity.setAttribute('lla', `${lat} ${lon} 100`);
         }catch(error){}        
     }
