@@ -48,7 +48,7 @@ const ar_entity_distance = 100;
 
 setTimeout(() => {
     console.log('TIMEOUT AND SEARCHING');
-    state.search_position="111 st george street toronto";
+    state.search_position="9 King's College Circle, Toronto";
     find_coordinate_by_address(state.search_position)
         .then(parse_coord_search_result)
         .then((to_coord) => {
