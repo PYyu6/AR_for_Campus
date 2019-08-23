@@ -1,5 +1,5 @@
 // console.log('at least i logged');
-const ar_entity = document.querySelector('#dora_entity');
+const ar_entity = document.querySelector('#Dora');
 
 // setTimeout(() => {
 //     alert(Object.keys(ar_entity).map((k) => {
