@@ -54,7 +54,7 @@ setTimeout(() => {
         .then((to_coord) => {
             if(!!state.cur_loc){
                 console.log('ADDRESS FOUND');
-                console.log(to_coord);
+                console.log(JSON.stringify(to_coord));
                 return find_direction(state.cur_loc, to_coord);
             }else{
                 throw "no current location";
@@ -63,13 +63,13 @@ setTimeout(() => {
         .then(parse_way_points)
         .then((wy_pts) => {
             console.log('DIR FOUND');
-            console.log(wy_pts)
+            console.log(JSON.stringify(wy_pts));
             
             state.next_loc = wy_pts[0];
             state.way_points = wy_pts.slice(1);
             state.distance = math.norm(lat_lon_to_world(state.cur_loc, state.next_loc));
             state.is_navigating = true;
-            console.log(state);
+            console.log(JSON.stringify(state));
             // alert(JSON.stringify(state));
         })
         .catch(console.log);
