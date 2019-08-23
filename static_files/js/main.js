@@ -114,8 +114,8 @@ const is_at_way_point = () => {
 const update_ar_display = () => {
     if(state.is_navigating){
         try{
-            const lat = this.next_loc.lat;
-            const lon = this.next_loc.lon;
+            const lat = state.next_loc.lat;
+            const lon = state.next_loc.lon;
             console.log(`SET BEACON`);
             ar_entity.setAttribute('lla', `${lat} ${lon} 100`);
         }catch(error){
