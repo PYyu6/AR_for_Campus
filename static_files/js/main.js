@@ -1,5 +1,5 @@
-console.log('at least i logged');
-// const ar_entity = document.querySelector('#dora_entity');
+// console.log('at least i logged');
+const ar_entity = document.querySelector('#dora_entity');
 
 // setTimeout(() => {
 //     alert(Object.keys(ar_entity).map((k) => {
@@ -32,17 +32,43 @@ console.log('at least i logged');
 // });
 
 
-// const state = {
-//     cur_loc: undefined,
-//     next_loc: undefined,
-//     distance: undefined,
-//     way_points: undefined,
-//     is_navigating: false,
-//     orientation_matrix: undefined
-// };
+const state = {
+    cur_loc: undefined,
+    next_loc: undefined,
+    distance: undefined,
+    way_points: undefined,
+    is_navigating: false,
+    orientation_matrix: undefined,
+    search_position: undefined
+};
 
-// const way_point_proximity_coefficient = 0.1;
-// const ar_entity_distance = 100;
+
+const way_point_proximity_coefficient = 0.1;
+const ar_entity_distance = 100;
+
+setTimeout(() => {
+    state.search_position="111 st george street toronto";
+    find_coordinate_by_address(state.search_position)
+        .then(parse_coord_search_result)
+        .then((to_coord) => {
+            if(!!state.cur_loc){
+                // console.log('address found ' + JSON.stringify(to_coord));
+                return find_direction(state.cur_loc, to_coord);
+            }else{
+                throw "no current location";
+            }
+        })
+        .then(parse_way_points)
+        .then((wy_pts) => {
+            // console.log('dir found');
+            state.is_navigating = true;
+            state.next_loc = wy_pts[0];
+            state.way_points = wy_pts.slice(1);
+            state.distance = math.norm(lat_lon_to_world(state.cur_loc, state.next_loc));
+            // alert(JSON.stringify(state));
+        })
+        .catch(alert);
+}, 1000);
 
 // nav_button.addEventListener("click", (e) => {
 //     const target_address = loc_input.value;
@@ -69,16 +95,25 @@ console.log('at least i logged');
 //         .catch(alert);
 // });
 
-// const is_at_way_point = () => {
-//     if(state.is_navigating){
-//         const dir = lat_lon_to_world(state.cur_loc, state.next_loc);
-//         const dis = math.norm(dir);
-//         return dis <= way_point_proximity_coefficient * state.distance;
-//     }else{
-//         return false;
-//     }
+const is_at_way_point = () => {
+    if(state.is_navigating){
+        const dir = lat_lon_to_world(state.cur_loc, state.next_loc);
+        const dis = math.norm(dir);
+        return dis <= way_point_proximity_coefficient * state.distance;
+    }else{
+        return false;
+    }
 
-// } 
+} 
+
+const update_ar_display = () => {
+    if(state.is_navigating){
+        const lat = this.next_loc.lat;
+        const lon = this.next_loc.lon;
+        console.log(`SET BEACON AT ${JSON.stringify(this.next_loc)}`);
+        ar_entity.setAttribute('lla', `${lat} ${lon} 100`);
+    }
+}
 
 // const update_ar_display = () => {
 //     // alert('updating')
@@ -123,22 +158,22 @@ console.log('at least i logged');
 //         // }
 // }
 
-// start_watching_geolocation((loc) => {
-//     // alert(JSON.stringify(state))
-//     state.cur_loc = loc;
-//     // alert('lol');
-//     if(is_at_way_point()){
-//         let next_way_point_coord = state.way_points.shift();
-//         if(!!next_way_point_coord){
-//             state.next_loc = next_way_point_coord;
-//         }else{
-//             alert('navigation successfully ended');
-//             state.is_navigating = false;
+start_watching_geolocation((loc) => {
+    // alert(JSON.stringify(state))
+    state.cur_loc = loc;
+    // alert('lol');
+    if(is_at_way_point()){
+        let next_way_point_coord = state.way_points.shift();
+        if(!!next_way_point_coord){
+            state.next_loc = next_way_point_coord;
+        }else{
+            console.log('navigation successfully ended');
+            state.is_navigating = false;
 
-//         }
-//     }
-//     update_ar_display();
-// });
+        }
+    }
+    update_ar_display();
+});
 
 // start_orientation_sensor((matrix) => {
     

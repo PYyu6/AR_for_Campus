@@ -10,8 +10,23 @@
   <script src="https://unpkg.com/mathjs/dist/math.min.js"></script>
   <script src="https://rawgit.com/argonjs/argon/develop/dist/argon.js"></script>
   <script src="https://rawgit.com/argonjs/argon-aframe/master/dist/argon-aframe.js"></script> -->
-  <script src="/js/main.js"></script>
+  <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+  <script src="https://rawgit.com/argonjs/argon/develop/dist/argon.js"></script>
+  <script src="https://rawgit.com/argonjs/argon-aframe/master/dist/argon-aframe.js"></script>
+  <script src="https://samples-develop.argonjs.io/resources/lib/CSS3DArgonRenderer.js"></script>
+  <script src="https://samples-develop.argonjs.io/resources/lib/CSS3DArgonHUD.js"></script>
   </head>
+  <body>
+    <div hidden>    
+      <div id="dora_text_div" style="color: red">Doraemon</div>
+    </div>
+    <ar-scene>
+      <ar-geopose id="Dora" lla="139.752797 35.685138" userotation="false"> 
+        <a-entity fixedsize="20">
+          <a-entity css-object="div: #dora_text_div" scale="0.02 0.02 0.02" position="0 3 0" showdistance="Imperial Palace<br>Tokyo, Japan<br>It is "></a-entity>
+        </a-entity>
+      </ar-geopose>
+  </ar-scene>
 <!-- <script>
     
   var prevData = "clip: idle; crossFadeDuration: .3";;
@@ -57,7 +72,7 @@ this.el.addEventListener('click', () => {
 });
 </script> -->
 
-<body style='margin : 0px; overflow: hidden;'>
+<!-- <body style='margin : 0px; overflow: hidden;'> -->
     <!-- <div hidden id="location_input_div">
       <input id='loc_input' height="20%"/>
       <button id='submit_loc'>navigate</button>
@@ -96,13 +111,14 @@ this.el.addEventListener('click', () => {
     <a-entity position="0 0 -10" scale="1 1 1" json-model="#bot" modify-materials></a-entity>
   </a-scene> -->
   
-  <!-- <script src='/js/utils/orientation_math.js'></script>
+  <script src='/js/utils/orientation_math.js'></script>
   <script src='/js/sensors/orientation_sensor.js'></script>
   <script src="/js/map_routing_api/api_key.js"></script>
   <script src="/js/map_routing_api/requests.js"></script>
-  <script src="/js/sensors/geo_location_sensor.js"></script> -->
+  <script src="/js/sensors/geo_location_sensor.js"></script>
 
+  <script src="/js/main.js"></script>
 
-  LOL
+  
 </body>
 </html>
