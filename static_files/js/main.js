@@ -47,12 +47,13 @@ const way_point_proximity_coefficient = 0.1;
 const ar_entity_distance = 100;
 
 setTimeout(() => {
+    console.log('TIMEOUT AND SEARCHING');
     state.search_position="111 st george street toronto";
     find_coordinate_by_address(state.search_position)
         .then(parse_coord_search_result)
         .then((to_coord) => {
             if(!!state.cur_loc){
-                // console.log('address found ' + JSON.stringify(to_coord));
+                console.log('ADDRESS FOUND ' + JSON.stringify(to_coord));
                 return find_direction(state.cur_loc, to_coord);
             }else{
                 throw "no current location";
@@ -60,14 +61,14 @@ setTimeout(() => {
         })
         .then(parse_way_points)
         .then((wy_pts) => {
-            // console.log('dir found');
+            console.log('DIR FOUND');
             state.is_navigating = true;
             state.next_loc = wy_pts[0];
             state.way_points = wy_pts.slice(1);
             state.distance = math.norm(lat_lon_to_world(state.cur_loc, state.next_loc));
             // alert(JSON.stringify(state));
         })
-        .catch(alert);
+        .catch(console.log);
 }, 1000);
 
 // nav_button.addEventListener("click", (e) => {
