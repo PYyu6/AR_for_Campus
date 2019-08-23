@@ -117,7 +117,7 @@ const update_ar_display = () => {
             const lat = state.next_loc.lat;
             const lon = state.next_loc.lon;
             console.log(`${lat} ${lon}`);
-            ar_entity.setAttribute('lla', `${lat} ${lon} 100`);
+            ar_entity.setAttribute('lla', `${lat} ${lon} 1`);
         }catch(error){
             // console.log('IMPOSSIBLEEEEEEEEEEEEEEEE!');
         }        
