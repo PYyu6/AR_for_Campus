@@ -68,7 +68,7 @@ setTimeout(() => {
             state.distance = math.norm(lat_lon_to_world(state.cur_loc, state.next_loc));
             // alert(JSON.stringify(state));
         })
-        .catch(console.log);
+        .catch(() => {});
 }, 1000);
 
 // nav_button.addEventListener("click", (e) => {
@@ -109,10 +109,12 @@ const is_at_way_point = () => {
 
 const update_ar_display = () => {
     if(state.is_navigating){
-        const lat = this.next_loc.lat;
-        const lon = this.next_loc.lon;
-        console.log(`SET BEACON AT ${JSON.stringify(this.next_loc)}`);
-        ar_entity.setAttribute('lla', `${lat} ${lon} 100`);
+        try{
+            const lat = this.next_loc.lat;
+            const lon = this.next_loc.lon;
+            console.log(`SET BEACON AT ${JSON.stringify(this.next_loc)}`);
+            ar_entity.setAttribute('lla', `${lat} ${lon} 100`);
+        }catch(error){}        
     }
 }
 
