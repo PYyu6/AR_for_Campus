@@ -22,6 +22,13 @@
     <div hidden>    
       <div id="dora_text_div" style="color: red">Doraemon</div>
     </div>
+
+    <div style="z-index: 2; text-align: center">
+        <input></input>
+        <button>Navigate</button>
+      </div>
+
+    <div style="z-index: 1">
     <ar-scene>
       
 
@@ -31,6 +38,8 @@
         </a-entity>
       </ar-geopose>
   </ar-scene>
+  </div>
+
 <!-- <script>
     
   var prevData = "clip: idle; crossFadeDuration: .3";;
@@ -76,14 +85,14 @@ this.el.addEventListener('click', () => {
 });
 </script> -->
 
-<!-- <body style='margin : 0px; overflow: hidden;'> -->
-    <!-- <div hidden id="location_input_div">
+<!-- <body style='margin : 0px; overflow: hidden;'>
+     <div hidden id="location_input_div">
       <input id='loc_input' height="20%"/>
       <button id='submit_loc'>navigate</button>
-    </div>
+    </div> -->
     
    
-      <ar-scene embedded arjs='sourceType: webcam;'> -->
+      <!--<ar-scene embedded arjs='sourceType: webcam;'> -->
 
           <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
           <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
