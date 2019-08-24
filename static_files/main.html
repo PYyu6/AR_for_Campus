@@ -19,21 +19,6 @@
   <script src="https://samples-develop.argonjs.io/resources/lib/CSS3DArgonHUD.js"></script>
   <script src="https://unpkg.com/aframe-textarea-component/dist/aframe-textarea-component.min.js"></script>
 
-  <script>
-    AFRAME.registerComponent('locationlistener', {
-    init: function () {
-      this.el.addEventListener('click', function (evt) {
-        console.log('I was clicked at: ', evt.detail.intersection.point);
-      });
-      this.el.addEventListener('mouseenter', function (evt) {
-        this.setAttribute('material', 'opacity', 0.5);
-      });
-      this.el.addEventListener('mouseleave', function (evt) {
-        this.setAttribute('material', 'opacity', 1.0);
-      });
-    }
-    });
-  </script>
   </head>
   <body>
     <div hidden>    
@@ -43,12 +28,12 @@
     
     <ar-scene>
         
-      <a-sphere position="0 1.25 -1" locationlistener radius="1.25" color="#EF2D5E" ></a-sphere>
-      <a-entity id="myCursor" cursor="fuse:true; fuse-timeout: 1000"
+      <a-sphere id='test_sphere' position="0 1.25 -1" locationlistener radius="1.25" color="#EF2D5E" ></a-sphere>
+      <!-- <a-entity id="myCursor" cursor="fuse:true; fuse-timeout: 1000"
                     position="0 0 -0.1"
                     geometry="primitive:ring; radiusInner: 0.001; radiusOuter: 0.0015"
                     material="color: #2E3A87; opacity:0.3;">          
-      </a-entity>
+      </a-entity> -->
 
       <ar-geopose id="Dora" lla="139.752797 35.685138" userotation="false"> 
         <a-entity fixedsize="20">
