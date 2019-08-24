@@ -209,7 +209,7 @@ start_watching_geolocation((loc) => {
 // })
 
 const test_sphere = document.querySelector('#test_sphere');
-test_sphere.addEventListener('click', () => {
-    console.log(CLIKKKKKKKKKKKK);
-})
+test_sphere.addEventListener('click', function(){
+    console.log('CLIKKKKKKKKKKKK');
+});
 
