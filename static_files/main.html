@@ -17,28 +17,24 @@
   <script src="https://rawgit.com/argonjs/argon-aframe/master/dist/argon-aframe.js"></script>
   <script src="https://samples-develop.argonjs.io/resources/lib/CSS3DArgonRenderer.js"></script>
   <script src="https://samples-develop.argonjs.io/resources/lib/CSS3DArgonHUD.js"></script>
+  <script src="https://unpkg.com/aframe-textarea-component/dist/aframe-textarea-component.min.js"></script>
+
   </head>
   <body>
     <div hidden>    
       <div id="dora_text_div" style="color: red">Doraemon</div>
     </div>
 
-    <div style="z-index: 2; text-align: center">
-        <input></input>
-        <button>Navigate</button>
-      </div>
-
-    <div style="z-index: 1">
+    
     <ar-scene>
-      
-
+      <a-entity textarea="text: I have an apple"></a-entity>
       <ar-geopose id="Dora" lla="139.752797 35.685138" userotation="false"> 
         <a-entity fixedsize="20">
           <a-entity css-object="div: #dora_text_div" scale="0.02 0.02 0.02" position="0 3 0" showdistance="Imperial Palace<br>Tokyo, Japan<br>It is "></a-entity>
         </a-entity>
       </ar-geopose>
-  </ar-scene>
-  </div>
+    </ar-scene>
+  
 
 <!-- <script>
     
