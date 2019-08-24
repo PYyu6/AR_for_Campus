@@ -208,12 +208,3 @@ start_watching_geolocation((loc) => {
 //   }
 // })
 
-
-AFRAME.registerComponent('cursor-location-input-listener', {
-    init: function () {
-      this.el.addEventListener('click', function (evt) {
-        console.log('CLIKCED: ', evt.detail.intersection.point);
-      });
-      
-    }
-  });
