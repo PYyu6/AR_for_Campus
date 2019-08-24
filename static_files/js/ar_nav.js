@@ -214,7 +214,7 @@ start_watching_geolocation((loc) => {
 // })
 
 
-const scene = document.querySelector('ar-sene');
+const scene = document.querySelector('ar-scene');
 scene.addEventListener('argon-initialized', (evt) => {
     // const bt = document.createElement('button');
     // bt.textContent='LOL';
