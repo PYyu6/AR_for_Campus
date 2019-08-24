@@ -76,7 +76,7 @@ setTimeout(() => {
             // alert(JSON.stringify(state));
         })
         .catch(console.log);
-}, 100);
+}, 3000);
 
 // nav_button.addEventListener("click", (e) => {
 //     const target_address = loc_input.value;
