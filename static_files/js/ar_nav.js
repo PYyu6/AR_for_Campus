@@ -219,7 +219,7 @@ scene.addEventListener('argon-initialized', (evt) => {
     // const bt = document.createElement('button');
     // bt.textContent='LOL';
     console.log('INIT')
-    console.log(Object.getPrototypeOf(scene.sceneEl.hud));
+    Object.keys(scene.sceneEl.hud).forEach(console.log);
     scene.sceneEl.hud.appendChild(document.querySelector('#hud-display'));
     document.querySelector('#nav_button').addEventListener('click', () => {
         console.log('LOLLLLLLLLLLLLLLL')
