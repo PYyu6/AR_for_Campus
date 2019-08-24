@@ -220,7 +220,7 @@ scene.addEventListener('argon-initialized', (evt) => {
     // bt.textContent='LOL';
     console.log(typeof scene.sceneEl.hud);
     scene.sceneEl.hud.appendChild(document.querySelector('#hud-display'));
-    scene.querySelector('#nav_button').addEventListener('click', () => {
+    document.querySelector('#nav_button').addEventListener('click', () => {
         console.log('LOLLLLLLLLLLLLLLL')
     });
 })
