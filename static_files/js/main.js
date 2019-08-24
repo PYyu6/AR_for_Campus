@@ -48,7 +48,7 @@ const ar_entity_distance = 100;
 
 setTimeout(() => {
     console.log('TIMEOUT AND SEARCHING');
-    state.search_position="9 King's College Circle, Toronto";
+    state.search_position=location.search.slice(1);
     find_coordinate_by_address(state.search_position)
         .then(parse_coord_search_result)
         .then((to_coord) => {
@@ -73,7 +73,7 @@ setTimeout(() => {
             // alert(JSON.stringify(state));
         })
         .catch(console.log);
-}, 1000);
+}, 100);
 
 // nav_button.addEventListener("click", (e) => {
 //     const target_address = loc_input.value;
