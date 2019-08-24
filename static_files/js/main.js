@@ -116,7 +116,7 @@ const update_ar_display = () => {
         try{
             const lat = state.next_loc.lat;
             const lon = state.next_loc.lon;
-            console.log(`${lat} ${lon}`);
+            // console.log(`${lat} ${lon}`);
             ar_entity.setAttribute('lla', `${lat} ${lon} 120`);
         }catch(error){
             // console.log('IMPOSSIBLEEEEEEEEEEEEEEEE!');
@@ -207,3 +207,9 @@ start_watching_geolocation((loc) => {
 //     alert('...');
 //   }
 // })
+
+const test_sphere = document.querySelector('#test_sphere');
+test_sphere.addEventListener('click', () => {
+    console.log(CLIKKKKKKKKKKKK);
+})
+
