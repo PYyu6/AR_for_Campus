@@ -48,6 +48,9 @@ const ar_entity_distance = 100;
 
 setTimeout(() => {
     console.log('TIMEOUT AND SEARCHING');
+    if(location.search.length == 0){
+        return;
+    }
     state.search_position=location.search.slice(1);
     find_coordinate_by_address(state.search_position)
         .then(parse_coord_search_result)
