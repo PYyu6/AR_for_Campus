@@ -207,8 +207,3 @@ start_watching_geolocation((loc) => {
 //     alert('...');
 //   }
 // })
-
-
-document.querySelector('#test_sphere').addEventListener('click', () => {
-    console.log('I AM CLICKED');
-})
