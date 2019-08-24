@@ -218,7 +218,10 @@ const scene = document.querySelector('ar-scene');
 scene.addEventListener('argon-initialized', (evt) => {
     // const bt = document.createElement('button');
     // bt.textContent='LOL';
-    console.log(typeof scene.sceneEl.hud)
+    console.log(typeof scene.sceneEl.hud);
     scene.sceneEl.hud.appendChild(document.querySelector('#hud-display'));
+    scene.querySelector('#nav_button').addEventListener('click', () => {
+        console.log('LOLLLLLLLLLLLLLLL')
+    });
 })
 
