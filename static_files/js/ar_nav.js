@@ -46,6 +46,7 @@ const state = {
 const way_point_proximity_coefficient = 0.1;
 const ar_entity_distance = 100;
 
+// horrible approach, wait for the first location then do it.
 setTimeout(() => {
     console.log('TIMEOUT AND SEARCHING');
     if(location.search.length == 0){
