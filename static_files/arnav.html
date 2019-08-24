@@ -19,6 +19,21 @@
   <script src="https://samples-develop.argonjs.io/resources/lib/CSS3DArgonHUD.js"></script>
   <script src="https://unpkg.com/aframe-textarea-component/dist/aframe-textarea-component.min.js"></script>
 
+
+
+  <script>
+    AFRAME.registerComponent('onClickHandle', {
+      schema: {},
+      init: function(){
+        this.el.addEventListener('mouseenter', function(){
+          console.log('HHHH')
+        });
+        this.el.addEventListener('click', function(){
+          console.log('HHHH')
+        });
+      }
+    })
+  </script>
   </head>
   <body>
     <div hidden>    
@@ -28,7 +43,7 @@
     
     <ar-scene>
         
-      <!-- <a-sphere id='test_sphere' position="0 1.25 -1" locationlistener radius="1.25" color="#EF2D5E" ></a-sphere> -->
+      <a-sphere onClickHandle position="0 1.25 -1" locationlistener radius="1.25" color="#EF2D5E" ></a-sphere>
       <!-- <a-entity id="myCursor" cursor="fuse:true; fuse-timeout: 1000"
                     position="0 0 -0.1"
                     geometry="primitive:ring; radiusInner: 0.001; radiusOuter: 0.0015"
@@ -47,50 +62,7 @@
     </ar-scene>
   
 
-<!-- <script>
-    
-  var prevData = "clip: idle; crossFadeDuration: .3";;
-  var listenerAdded = false;
-  var scene = document.querySelector('a-scene');  
-  var playOnce = false; 
 
- 
-  
-      
-AFRAME.registerComponent('animation-control', {
-schema: {default: ''},
-init() {
-   
-  const bot = document.querySelector('#bot'); 
-  // var jumpBut = document.querySelector('#jump');
-  // var runBut = document.querySelector('#run');
-  // var walkBut = document.querySelector('#walk');
-  // var idleBut = document.querySelector('#idle');  
-  // var scene = document.querySelector('a-scene');
-  
- 
-
-this.el.addEventListener('click', () => {
-      
-    if (this.el != jumpBut){  
-      bot.setAttribute("animation-mixer",this.data); 
-       scene.removeEventListener('animation-loop', jumpTrans);
-       prevData = this.data;
-       
-   }
-      
-   if (this.el == jumpBut) {
-      
-      bot.setAttribute("animation-mixer",this.data); 
-      var jumpTrans = function () {scene.removeEventListener('animation-loop',jumpTrans); bot.setAttribute("animation-mixer",prevData);console.log("scene ="+scene); console.log("fire")};  
-      console.log("prev data from jump button = "+prevData); 
-      setTimeout (function(){scene.addEventListener('animation-loop',jumpTrans);},500);     
-   
-   }
-  });     
-}
-});
-</script> -->
 
 <!-- <body style='margin : 0px; overflow: hidden;'>
      <div hidden id="location_input_div">
