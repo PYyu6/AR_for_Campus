@@ -212,3 +212,12 @@ start_watching_geolocation((loc) => {
 //     alert('...');
 //   }
 // })
+
+
+const scene = document.querySelector('ar-sene');
+scene.addEventListener('argon-initialized', (evt) => {
+    const bt = document.createElement('button');
+    bt.textContent='LOL';
+    scene.sceneEl.hud.appendChild(bt);
+})
+
