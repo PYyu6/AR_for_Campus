@@ -216,8 +216,8 @@ start_watching_geolocation((loc) => {
 
 const scene = document.querySelector('ar-sene');
 scene.addEventListener('argon-initialized', (evt) => {
-    const bt = document.createElement('button');
-    bt.textContent='LOL';
-    scene.sceneEl.hud.appendChild(bt);
+    // const bt = document.createElement('button');
+    // bt.textContent='LOL';
+    scene.sceneEl.hud.appendChild(document.querySelector('#display'));
 })
 
