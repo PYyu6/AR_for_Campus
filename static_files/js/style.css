@@ -61,7 +61,7 @@ button {
     font-size: 11;
 	border: 0px;
 	padding: 5px 10px;
-	/* cursor: pointer; */
+	cursor: pointer;
     margin: 10px;
 }
 button:hover {
