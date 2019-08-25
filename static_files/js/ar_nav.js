@@ -232,9 +232,12 @@ scene.addEventListener('argon-initialized', (evt) => {
     arrive_button.addEventListener('click', () => {
         console.log('ARRIVE CLICKED')
         if(state.is_navigating){
+            console.log('ARRIVED CLICKED AND IS NAV')
             let next_way_point_coord = state.way_points.shift();
             if(!!next_way_point_coord){
+                
                 state.next_loc = next_way_point_coord;
+                console.log(`NEXT POINT UPATED ${state.next_loc.lat}, ${state.next_loc.lon}`)
                 update_ar_display();
             }else{
                 console.log('NAV ENDED');
