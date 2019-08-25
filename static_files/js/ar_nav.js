@@ -1,6 +1,6 @@
 // console.log('at least i logged');
 const ar_entity = document.querySelector('#Dora');
-
+const loc_input = document.querySelector('#loc_input');
 // setTimeout(() => {
 //     alert(Object.keys(ar_entity).map((k) => {
 //         try{
@@ -47,12 +47,14 @@ const way_point_proximity_coefficient = 0.1;
 const ar_entity_distance = 100;
 
 // horrible approach, wait for the first location then do it.
-setTimeout(() => {
+const nav_start = () => {
     console.log('TIMEOUT AND SEARCHING');
-    if(location.search.length == 0){
-        state.search_position='111 st george street, toronto';
+    const input_str = loc_input.value;
+    if(input_str.length <= 0){
+        console.log('NO INPUT');
+        return;
     }else{
-        state.search_position=location.search.slice(1);
+        state.search_position = input_str;
     }
     find_coordinate_by_address(state.search_position)
         .then(parse_coord_search_result)
@@ -78,7 +80,7 @@ setTimeout(() => {
             // alert(JSON.stringify(state));
         })
         .catch(console.log);
-}, 3000);
+};
 
 // nav_button.addEventListener("click", (e) => {
 //     const target_address = loc_input.value;
@@ -222,7 +224,8 @@ scene.addEventListener('argon-initialized', (evt) => {
     // Object.keys(scene.sceneEl.hud).forEach(console.log);
     scene.sceneEl.hud.appendChild(document.querySelector('#hud-display'));
     document.querySelector('#nav_button').addEventListener('click', () => {
-        console.log('LOLLLLLLLLLLLLLLL')
+        // console.log('LOLLLLLLLLLLLLLLL')
+        nav_start();
     });
 })
 
