@@ -70,7 +70,8 @@
         var thisPos = object3D.getWorldPosition();
         var distance = Math.round(thisPos.distanceTo(cameraPos));
         var cssDiv = this.el.getObject3D('div');
-        var msg = this.text + distance + " meters away";
+        // var msg = this.text + distance + " meters away";
+        var msg = `${this.text} ${distance} meters away, at ${the.el.getAttribute('lla')}`;
         cssDiv.elements[0].innerHTML = msg;
         cssDiv.elements[1].innerHTML = msg;
       }
