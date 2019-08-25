@@ -1,6 +1,7 @@
 // console.log('at least i logged');
 const ar_entity = document.querySelector('#Dora');
 const loc_input = document.querySelector('#loc_input');
+const arrive_button = document.querySelector('#arrived_button');
 // setTimeout(() => {
 //     alert(Object.keys(ar_entity).map((k) => {
 //         try{
@@ -227,5 +228,17 @@ scene.addEventListener('argon-initialized', (evt) => {
         // console.log('LOLLLLLLLLLLLLLLL')
         nav_start();
     });
-})
 
+    arrive_button.addEventListener('click', () => {
+        if(state.is_navigating){
+            let next_way_point_coord = state.way_points.shift();
+            if(!!next_way_point_coord){
+                state.next_loc = next_way_point_coord;
+            }else{
+                console.log('NAV ENDED');
+                state.is_navigating = false;
+
+            }
+        }
+    })
+});
