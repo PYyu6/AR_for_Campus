@@ -123,15 +123,15 @@ const is_at_way_point = () => {
 const update_ar_display = () => {
     if(state.is_navigating){
         try{
-            [state.next_loc, ...state.way_points].map(create_ar_geopose_from_coords)
-                                                 .forEach((ele) => {
-                                                     console.log(`CREATING ${ele.tagName} at ${ele.getAttribute('lla')}, compared to ${ar_entity.tagName}`)
-                                                     scene.appendChild(ele);
-                                                 });
-            // const lat = state.next_loc.lat;
-            // const lon = state.next_loc.lon;
-            // // console.log();
-            // ar_entity.setAttribute('lla', `${lat} ${lon} 120`);
+            // [state.next_loc, ...state.way_points].map(create_ar_geopose_from_coords)
+            //                                      .forEach((ele) => {
+            //                                          console.log(`CREATING ${ele.tagName} at ${ele.getAttribute('lla')}, compared to ${ar_entity.tagName}`)
+            //                                          scene.appendChild(ele);
+            //                                      });
+            const lat = state.next_loc.lat;
+            const lon = state.next_loc.lon;
+            // console.log();
+            ar_entity.setAttribute('lla', `${lat} ${lon} 120`);
             // console.log(`next_loc lat: ${lat} lon: ${lon}, ${JSON.stringify(ar_entity.getAttribute('lla'))}`);
         }catch(error){
             // console.log('IMPOSSIBLEEEEEEEEEEEEEEEE!');
