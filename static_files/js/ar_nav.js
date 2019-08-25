@@ -125,7 +125,7 @@ const update_ar_display = () => {
         try{
             [state.next_loc, ...state.way_points].map(create_ar_geopose_from_coords)
                                                  .forEach((ele) => {
-                                                     console.log(`CREATING ${ele.getAttribute('lla')}`)
+                                                     console.log(`CREATING ${ele.tagName} at ${ele.getAttribute('lla')}`)
                                                      scene.appendChild(ele);
                                                  });
             // const lat = state.next_loc.lat;
