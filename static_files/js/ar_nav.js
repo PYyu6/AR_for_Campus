@@ -61,8 +61,8 @@ const nav_start = () => {
         .then(parse_coord_search_result)
         .then((to_coord) => {
             if(!!state.cur_loc){
-                console.log('ADDRESS FOUND');
-                console.log(JSON.stringify(to_coord));
+                // console.log('ADDRESS FOUND');
+                // console.log(JSON.stringify(to_coord));
                 return find_direction(state.cur_loc, to_coord);
             }else{
                 throw "no current location";
@@ -70,8 +70,8 @@ const nav_start = () => {
         })
         .then(parse_way_points)
         .then((wy_pts) => {
-            console.log('DIR FOUND');
-            console.log(JSON.stringify(wy_pts));
+            // console.log('DIR FOUND');
+            // console.log(JSON.stringify(wy_pts));
             
             state.next_loc = wy_pts[0];
             state.way_points = wy_pts.slice(1);
@@ -124,8 +124,9 @@ const update_ar_display = () => {
         try{
             const lat = state.next_loc.lat;
             const lon = state.next_loc.lon;
-            // console.log(`${lat} ${lon}`);
+            // console.log();
             ar_entity.setAttribute('lla', `${lat} ${lon} 120`);
+            console.log(`next_loc lat: ${lat} lon: ${lon}, ${JSON.stringify(ar_entity.getAttribute('lla'))}`);
         }catch(error){
             // console.log('IMPOSSIBLEEEEEEEEEEEEEEEE!');
         }        
