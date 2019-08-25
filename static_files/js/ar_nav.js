@@ -2,6 +2,7 @@
 const ar_entity = document.querySelector('#Dora');
 const loc_input = document.querySelector('#loc_input');
 const arrive_button = document.querySelector('#arrived_button');
+const scene = document.querySelector('ar-scene');
 // setTimeout(() => {
 //     alert(Object.keys(ar_entity).map((k) => {
 //         try{
@@ -122,15 +123,28 @@ const is_at_way_point = () => {
 const update_ar_display = () => {
     if(state.is_navigating){
         try{
-            const lat = state.next_loc.lat;
-            const lon = state.next_loc.lon;
-            // console.log();
-            ar_entity.setAttribute('lla', `${lat} ${lon} 120`);
-            console.log(`next_loc lat: ${lat} lon: ${lon}, ${JSON.stringify(ar_entity.getAttribute('lla'))}`);
+            [state.next_loc, ...state.way_points].map(create_ar_geopose_from_coords)
+                                                 .forEach((ele) => {
+                                                     scene.appendChild(ele);
+                                                 });
+            // const lat = state.next_loc.lat;
+            // const lon = state.next_loc.lon;
+            // // console.log();
+            // ar_entity.setAttribute('lla', `${lat} ${lon} 120`);
+            // console.log(`next_loc lat: ${lat} lon: ${lon}, ${JSON.stringify(ar_entity.getAttribute('lla'))}`);
         }catch(error){
             // console.log('IMPOSSIBLEEEEEEEEEEEEEEEE!');
         }        
     }
+}
+
+
+const create_ar_geopose_from_coords = (p) => {
+    const lat = p.lat;
+    const lon = p.lon;
+    const ele_str = `<ar-geopose look-at id="Dora" lla="${lon} ${lat}" userotation="false"> <a-entity fixedsize="20" billboard><a-entity css-object="div: #dora_text_div" scale="0.02 0.02 0.02" position="0 3 0"></a-entity></a-entity></ar-geopose>`
+    return $.parseHTML(ele_str)[0];
+    
 }
 
 // const update_ar_display = () => {
@@ -217,8 +231,6 @@ start_watching_geolocation((loc) => {
 //   }
 // })
 
-
-const scene = document.querySelector('ar-scene');
 scene.addEventListener('argon-initialized', (evt) => {
     // const bt = document.createElement('button');
     // bt.textContent='LOL';
