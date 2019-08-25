@@ -133,7 +133,7 @@ const update_ar_display = () => {
             // console.log();
             ar_entity.setAttribute('lla', `${lat} ${lon} 120`);
             // console.log(`next_loc lat: ${lat} lon: ${lon}, ${JSON.stringify(ar_entity.getAttribute('lla'))}`);
-            scene.reload();
+            
         }catch(error){
             console.log(error);
             // console.log('IMPOSSIBLEEEEEEEEEEEEEEEE!');
