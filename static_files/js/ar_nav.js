@@ -131,7 +131,8 @@ const update_ar_display = () => {
             const lat = state.next_loc.lat;
             const lon = state.next_loc.lon;
             // console.log();
-            ar_entity.setAttribute('referenceframe', `lla: ${lon} ${lat}`);
+            ar_entity.setAttribute('lla', `${lon} ${lat}`);
+            // ar_entity.setAttribute('referenceframe', `lla: ${lon} ${lat}`);
             // console.log(`next_loc lat: ${lat} lon: ${lon}, ${JSON.stringify(ar_entity.getAttribute('lla'))}`);
             
         }catch(error){
