@@ -36,10 +36,10 @@ $.ajax('/Resources/utcoding_coverted.csv', {
         // console.log("out of the loop");
         // return code2Fullname;
         // acronymMapping = code2Fullname;
-        try{
-            console.log(JSON.stringify(acronymMapping));
-        }catch(err){
-            console.log(JSON.stringify(err));
-        }
+        // try{
+        //     console.log(JSON.stringify(acronymMapping));
+        // }catch(err){
+        //     console.log(JSON.stringify(err));
+        // }
         
   }

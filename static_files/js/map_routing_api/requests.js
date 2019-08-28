@@ -25,7 +25,7 @@ const find_direction = (from_coord, to_coord) => {
     return `${coord.lon}, ${coord.lat}`
   };
   return new Promise((resolve, reject) => {
-    req_str = `https://api.mapbox.com/directions/v5/mapbox/walking/${coord_to_str(from_coord)};${coord_to_str(to_coord)}.json?access_token=${api_key}`;
+    req_str = `https://api.mapbox.com/directions/v5/mapbox/walking/${coord_to_str(from_coord)};${coord_to_str(to_coord)}.json?access_token=${api_key}&steps=true`;
     // $.post('/cors_bypass', data={url: req_str}, success=(data, status) => {
     //   if(status >= 500){
     //     reject('unsuccessful cors dir');
@@ -66,17 +66,31 @@ const parse_coord_search_result = (dt) => {
 const parse_way_points = (kargs) => {
   // console.log(JSON.stringify(kargs));
   const dt = kargs.dt;
-  const end_coord = kargs.to_coord;
+  // const end_coord = kargs.to_coord;
   // alert(JSON.stringify(from_coord));
-  const wy_pts = dt.waypoints;
-  const way_points = wy_pts.map((wy_pt) => {
-    let wy_pt_coord = wy_pt.location;
-    let wy_pt_coord_obj = {lon: wy_pt_coord[0], lat:wy_pt_coord[1]};
-    return wy_pt_coord_obj;
+  // const wy_pts = dt.waypoints;
+  // const way_points = wy_pts.map((wy_pt) => {
+  //   let wy_pt_coord = wy_pt.location;
+  //   let wy_pt_coord_obj = {lon: wy_pt_coord[0], lat:wy_pt_coord[1]};
+  //   return wy_pt_coord_obj;
+  // });
+  // // alert(JSON.stringify(end_coord));
+  // way_points.push(end_coord);
+  // return new Promise((resolve, reject)=> resolve(way_points));
+  const way_points = [];
+  dt.legs.steps.forEach((stp_i) => {
+    const instr = stp_i.maneuver.instruction;
+    stp_i.intersections.forEach((intr) => {
+      const lat = intr.location[1];
+      const lon = intr.location[0];
+      way_points.push({lat: lat, lon: lon, instruction: instr});
+    });
+
   });
-  // alert(JSON.stringify(end_coord));
-  way_points.push(end_coord);
-  return new Promise((resolve, reject)=> resolve(way_points));
+  return new Promise((resolve, reject) => {resolve(way_points)});
+
+
+
 }
 
 // for(let i = 0; i<100; i++){
