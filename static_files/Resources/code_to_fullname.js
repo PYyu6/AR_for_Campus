@@ -14,7 +14,7 @@ $.ajax('utcoding_coverted.csv', {
     dataType: 'text',
   }).done(CsvtoArray)
   .catch((err) => {
-    console.log('CATCHED');
+    console.log(err);
   });
 
   function CsvtoArray(data){
