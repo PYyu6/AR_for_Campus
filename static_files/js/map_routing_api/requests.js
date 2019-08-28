@@ -78,12 +78,14 @@ const parse_way_points = (kargs) => {
   // way_points.push(end_coord);
   // return new Promise((resolve, reject)=> resolve(way_points));
   const way_points = [];
-  dt.legs.steps.forEach((stp_i) => {
+  // console.log(`DT ${JSON.stringify(dt)}`);
+  dt.routes.legs[0].steps.forEach((stp_i) => {
     const instr = stp_i.maneuver.instruction;
     stp_i.intersections.forEach((intr) => {
       const lat = intr.location[1];
       const lon = intr.location[0];
       way_points.push({lat: lat, lon: lon, instruction: instr});
+      
     });
 
   });
