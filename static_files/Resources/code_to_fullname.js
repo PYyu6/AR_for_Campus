@@ -7,6 +7,7 @@
 //     fclose(file);
 
 // }
+console.log("in this file");
 const acronymMapping;
 
 $.ajax({
@@ -15,6 +16,7 @@ $.ajax({
   }).done(CsvtoArray);
 
   function CsvtoArray(data){
+        console.log("here");
         var allRows = data.split(/\r?\n|\r/);
         // var code2Fullname = [];
         var code2Fullname = {}
