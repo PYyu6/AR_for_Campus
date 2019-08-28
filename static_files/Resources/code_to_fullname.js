@@ -8,7 +8,7 @@
 
 // }
 console.log("in this file");
-const acronymMapping;
+const acronymMapping = {};
 
 $.ajax({
     url: 'utcoding_coverted.csv',
@@ -19,15 +19,17 @@ $.ajax({
         console.log("here");
         var allRows = data.split(/\r?\n|\r/);
         // var code2Fullname = [];
-        var code2Fullname = {}
+        // var code2Fullname = {}
         for (var oneRow = 0; oneRow < allRows.length; oneRow++) {
             var rowElement = allRows[oneRow].split(',');
             let nm = rowElement[0]
             let acrnym = rowElement[1];
-            code2Fullname.push(rowElement);
-            code2Fullname[acrnym] = nm;
+            // code2Fullname.push(rowElement);
+            // code2Fullname[acrnym] = nm;
+            acronymMapping[acrnym] = nm;
+
         }
         // return code2Fullname;
-        acronymMapping = code2Fullname;
+        // acronymMapping = code2Fullname;
         console.log(acronymMapping);
   }

@@ -32,6 +32,7 @@ app.use('/', express.static(path.join(__dirname, 'static_files')));
 
 app.get('/cors_bypass', (req, res) => {
   console.log(JSON.stringify(req.query));
+  // const method = 
   superagent.get(req.query.url)
             .then((cors_res) => {
               res.send(cors_res.body);
