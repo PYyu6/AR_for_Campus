@@ -10,7 +10,7 @@
 // console.log("in this file");
 const acronymMapping = {};
 
-$.ajax('utcoding_coverted.csv', {
+$.ajax('/Resources/utcoding_coverted.csv', {
     dataType: 'text',
   }).done(CsvtoArray)
   .catch((err) => {
