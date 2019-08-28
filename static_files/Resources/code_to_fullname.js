@@ -7,13 +7,15 @@
 //     fclose(file);
 
 // }
-console.log("in this file");
+// console.log("in this file");
 const acronymMapping = {};
 
-$.ajax({
-    url: 'utcoding_coverted.csv',
+$.ajax('utcoding_coverted.csv', {
     dataType: 'text',
-  }).done(CsvtoArray);
+  }).done(CsvtoArray)
+  .catch((err) => {
+    console.log('CATCHED');
+  });
 
   function CsvtoArray(data){
         console.log("here");
