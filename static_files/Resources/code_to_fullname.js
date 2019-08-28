@@ -22,7 +22,9 @@ $.ajax('/Resources/utcoding_coverted.csv', {
         var allRows = data.split(/\r?\n|\r/);
         // var code2Fullname = [];
         // var code2Fullname = {}
+        console.log(allRows);
         for (var oneRow = 0; oneRow < allRows.length; oneRow++) {
+            console.log("inside the loop");
             var rowElement = allRows[oneRow].split(',');
             let nm = rowElement[0]
             let acrnym = rowElement[1];
@@ -31,6 +33,7 @@ $.ajax('/Resources/utcoding_coverted.csv', {
             acronymMapping[acrnym] = nm;
 
         }
+        console.log("out of the loop");
         // return code2Fullname;
         // acronymMapping = code2Fullname;
         console.log(acronymMapping);
